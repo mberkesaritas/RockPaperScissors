@@ -1,6 +1,8 @@
 const socket = io.connect("http://localhost:3000")
-const selectionButtons = document.querySelectorAll('[data-selection]')
-const finalColumn = document.querySelector('[data-final-column]')
+const rockButton = document.getElementById("rockButton")
+const paperButton = document.getElementById("paperButton")
+const scissorsButton = document.getElementById("scissorsButton")
+const fsinalColumn = document.querySelector('[data-final-column]')
 const computerScoreSpan = document.querySelector('[data-computer-score]')
 const yourScoreSpan = document.querySelector('[data-your-score]')
 var i = 1 
@@ -30,16 +32,20 @@ const SELECTIONS = [
   }
 ]
 
-selectionButtons.forEach(selectionButton => {
-  selectionButton.addEventListener('click', e => {
+rockButton.addEventListener('click', e => {
 
     if (i % 2 != 0) {
-      const playerOneSelection = selectionButton.dataset.selection
+      const playerOneSelection = "rock"
       playerOne = SELECTIONS.find(playerOne => playerOne.name === playerOneSelection)
       console.log(playerOne)
+
+      socket.emit("option" ,{
+        player: socket.id ,
+        option: playerOneSelection
+      })
     }
     else{
-      const playerTwoSelection = selectionButton.dataset.selection
+      const playerTwoSelection = selectionButtons.dataset.selection
       playerTwo = SELECTIONS.find(playerTwo => playerTwo.name === playerTwoSelection)
       console.log(playerTwoSelection)
     }
@@ -51,7 +57,6 @@ selectionButtons.forEach(selectionButton => {
     console.log(i)
 
   })
-})
 
 function makeSelection(playerOne , playerTwo) {
   const yourWinner = isWinner(playerOne, playerTwo)
