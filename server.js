@@ -10,6 +10,8 @@ app.use(express.static("./"))
 const io = socket(server)
 var playerOneId = ""
 var playerTwoId = ""
+var playerOneSelected = ""
+var playerTwoSelected = ""
 
 
 
@@ -41,16 +43,23 @@ io.on('connection', (socket) => {
     console.log(data)
     if(playerOneId == data.player){
       console.log("player1selected : " + data.option)
+      playerOneSelected = data.option
     }
     else{
       console.log("player2selected : " + data.option)
+      playerTwoSelected = data.option
     }
 
     io.sockets.emit("option" , {
       data,
-      userCount:userCount
+      userCount:userCount,
+      playerOneSelected : playerOneSelected,
+      playerTwoSelected : playerTwoSelected
+
     })
   })
 });
+
+
 
 
