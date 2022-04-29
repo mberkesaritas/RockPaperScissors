@@ -50,13 +50,18 @@ io.on('connection', (socket) => {
       playerTwoSelected = data.option
     }
 
+<<<<<<< HEAD
     if(playerOneSelected == "" || playerTwoSelected == ""){
+=======
+    if(playerOneSelected != "" || playerTwoSelected != ""){
+>>>>>>> 7d1e55480ed445335b01e3205879546a8a78c286
 
       io.sockets.emit("option" , {
         data,
         userCount:userCount,
         playerOneSelected : playerOneSelected,
         playerTwoSelected : playerTwoSelected
+<<<<<<< HEAD
       })
       
     }
@@ -66,6 +71,15 @@ io.on('connection', (socket) => {
     playerOneSelected = ""
     playerTwoSelected = ""
 
+=======
+        
+      })
+  
+      playerOneSelected = ""
+      playerOneSelected = ""
+
+    }
+>>>>>>> 7d1e55480ed445335b01e3205879546a8a78c286
   })
 });
 
