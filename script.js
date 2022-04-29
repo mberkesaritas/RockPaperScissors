@@ -5,12 +5,10 @@ const scissorsButton = document.getElementById("scissorsButton")
 const finalColumn = document.querySelector('[data-final-column]')
 const computerScoreSpan = document.querySelector('[data-computer-score]')
 const yourScoreSpan = document.querySelector('[data-your-score]')
-var i = 1 
+var i = 0
 var playerOne
 var playerTwo
 const serverResult = document.getElementById("serverResult")
-
-
 
 
 
@@ -39,7 +37,7 @@ rockButton.addEventListener('click', e => {
       console.log(playerOne)
 
       socket.emit("option" ,{
-        player: socket.id ,
+        player: socket.id,
         option: playerOne
       })
     
@@ -61,6 +59,7 @@ paperButton.addEventListener('click', e => {
  
 
 })
+
 scissorsButton.addEventListener('click', e => {
 
   const playerOneSelection = "scissors"
@@ -82,7 +81,10 @@ socket.on("connect" , () => {
 
 socket.on("option" , (data) => {
   console.log(data)
+  
   makeSelection(data.playerOneSelected , data.playerTwoSelected)
+
+
 })
 
 
@@ -103,10 +105,6 @@ function makeSelection(playerOne , playerTwo) {
   })
   
 }
-
-
-
-
 
 function incrementScore(scoreSpan) {
   scoreSpan.innerText = parseInt(scoreSpan.innerText) + 1

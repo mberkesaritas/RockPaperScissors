@@ -50,13 +50,22 @@ io.on('connection', (socket) => {
       playerTwoSelected = data.option
     }
 
-    io.sockets.emit("option" , {
-      data,
-      userCount:userCount,
-      playerOneSelected : playerOneSelected,
-      playerTwoSelected : playerTwoSelected
+    if(playerOneSelected == "" || playerTwoSelected == ""){
 
-    })
+      io.sockets.emit("option" , {
+        data,
+        userCount:userCount,
+        playerOneSelected : playerOneSelected,
+        playerTwoSelected : playerTwoSelected
+      })
+      
+    }
+
+  
+
+    playerOneSelected = ""
+    playerTwoSelected = ""
+
   })
 });
 
