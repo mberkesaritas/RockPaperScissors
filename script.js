@@ -80,7 +80,7 @@ socket.on("connect" , () => {
 })
 
 socket.on("option" , (data) => {
-  console.log(data)
+  console.log("hatalı ksıısm"+data.playerOneSelected)
   
   makeSelection(data.playerOneSelected , data.playerTwoSelected)
 

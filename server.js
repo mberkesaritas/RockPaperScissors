@@ -23,7 +23,7 @@ var playerTwoSelected = ""
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  if(userCount % 2 != 0|| userCount == 0){
+  if(userCount % 2 != 0){
     playerOneId = socket.id
   }
   else if(userCount % 2 == 0){
@@ -50,28 +50,13 @@ io.on('connection', (socket) => {
       playerTwoSelected = data.option
     }
 
-<<<<<<< HEAD
-    if(playerOneSelected == "" || playerTwoSelected == ""){
-=======
     if(playerOneSelected != "" || playerTwoSelected != ""){
->>>>>>> 7d1e55480ed445335b01e3205879546a8a78c286
 
       io.sockets.emit("option" , {
         data,
         userCount:userCount,
         playerOneSelected : playerOneSelected,
         playerTwoSelected : playerTwoSelected
-<<<<<<< HEAD
-      })
-      
-    }
-
-  
-
-    playerOneSelected = ""
-    playerTwoSelected = ""
-
-=======
         
       })
   
@@ -79,7 +64,6 @@ io.on('connection', (socket) => {
       playerOneSelected = ""
 
     }
->>>>>>> 7d1e55480ed445335b01e3205879546a8a78c286
   })
 });
 
