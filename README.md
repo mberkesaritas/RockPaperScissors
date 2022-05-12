@@ -1,2 +1,2 @@
 # RockPaperScissors
-Online player rock paper scissors
+Online  rock paper scissors
